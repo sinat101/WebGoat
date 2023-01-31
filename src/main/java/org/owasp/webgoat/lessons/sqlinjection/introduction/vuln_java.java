@@ -55,7 +55,8 @@ public class SqlInjectionLesson9 extends AssignmentEndpoint {
     public AttackResult completed(@RequestParam String name, @RequestParam String auth_tan) {
         return injectableQueryIntegrity(name, auth_tan);
     }
-
+    
+    // nosemgrep
     protected AttackResult injectableQueryIntegrity(String name, String auth_tan) {
         StringBuilder output = new StringBuilder();
         String query = "SELECT * FROM employees WHERE last_name = '" + name + "' AND auth_tan = '" + auth_tan + "'";
