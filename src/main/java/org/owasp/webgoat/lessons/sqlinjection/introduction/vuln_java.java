@@ -56,11 +56,11 @@ public class SqlInjectionLesson9 extends AssignmentEndpoint {
         return injectableQueryIntegrity(name, auth_tan);
     }
     
-    // nosemgrep
     protected AttackResult injectableQueryIntegrity(String name, String auth_tan) {
         StringBuilder output = new StringBuilder();
         String query = "SELECT * FROM employees WHERE last_name = '" + name + "' AND auth_tan = '" + auth_tan + "'";
         try (Connection connection = dataSource.getConnection()) {
+            // nosemgrep
             try {
                 Statement statement = connection.createStatement(TYPE_SCROLL_SENSITIVE, CONCUR_UPDATABLE);
                 SqlInjectionLesson8.log(connection, query);
